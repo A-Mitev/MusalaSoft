@@ -1,0 +1,5 @@
+1461658531653	Rename method 'phoneNormalisation'
+1461659789076	Extract constant 'Regex_fourth_digit'
+1461660061662	Extract constant 'REGULAR_PHONE_LENGTH'
+1461660081421	Rename field 'Regex_fourth_digit'
+1461660186826	Extract constant 'REGEX_LAST_SIX_DIGIT'
