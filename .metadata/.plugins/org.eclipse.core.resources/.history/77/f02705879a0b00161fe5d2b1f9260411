@@ -63,7 +63,6 @@ public class Phonebook {
 		System.err.println("Please enter name to delete!");
 		String nameToBeDeleted = scanner.next();
 		
-		// povtorenie dokato ne se vuvede sashtestvuvashto ime za iztrivane
 		while (!peoples.containsKey(nameToBeDeleted)){
 		System.err.println("Invalid name. Please enter name to delete!");
 		nameToBeDeleted = scanner.next();
@@ -71,10 +70,13 @@ public class Phonebook {
 		
 		peoples.remove(nameToBeDeleted);
 		
+		
 		System.out.println("\n" + "Nomera v ukazatelq sled iztrivane:");
 		for (Map.Entry<String, String> entry : peoples.entrySet()) {
 			System.out.println(entry.getKey() + " " + entry.getValue());
 		}
+		
+		
 	}
 
 	public static boolean phoneValidation(String number) {
