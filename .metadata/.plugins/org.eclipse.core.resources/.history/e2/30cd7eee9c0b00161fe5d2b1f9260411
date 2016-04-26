@@ -37,7 +37,7 @@ public class Phonebook {
 		BufferedReader bReader = new BufferedReader(new FileReader(phoneBook));
 		try {
 			String line = bReader.readLine();
-			while ((line = bReader.readLine()) != null) {
+			while ((bReader.readLine()) != null) {
 				parts = line.split(", ");
 				String name = parts[0];
 				String phoneNumber = parts[1];

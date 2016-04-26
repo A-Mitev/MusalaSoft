@@ -34,10 +34,10 @@ public class Phonebook {
 		// polzvam TreeMap za da se nalivat sortirani po key (ime).
 		TreeMap<String, String> peoples = new TreeMap<String, String>();
 		String[] parts;
-		BufferedReader bReader = new BufferedReader(new FileReader(phoneBook));
+		BufferedReader br = new BufferedReader(new FileReader(phoneBook));
 		try {
-			String line = bReader.readLine();
-			while ((line = bReader.readLine()) != null) {
+			String line = br.readLine();
+			while ((line = br.readLine()) != null) {
 				parts = line.split(", ");
 				String name = parts[0];
 				String phoneNumber = parts[1];
@@ -50,7 +50,7 @@ public class Phonebook {
 			e.printStackTrace();
 		} finally {
 			try {
-				bReader.close();
+				br.close();
 			} catch (IOException e) {
 				e.printStackTrace();
 			}
