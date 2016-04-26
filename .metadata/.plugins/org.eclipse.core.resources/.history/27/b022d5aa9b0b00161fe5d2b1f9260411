@@ -60,7 +60,7 @@ public class Phonebook {
 			System.out.println(entry.getKey() + " " + entry.getValue());
 		}
 		
-		System.err.println("\n" + "Please enter name to delete!");
+		System.err.println("Please enter name to delete!");
 		String nameToBeDeleted = scanner.next();
 		
 		// povtorenie dokato ne se vuvede sashtestvuvashto ime za iztrivane
@@ -76,7 +76,7 @@ public class Phonebook {
 			System.out.println(entry.getKey() + " " + entry.getValue());
 		}
 		
-		System.out.println("\n" + "Please enter name for search:");
+		System.err.println("\n" + "Please enter name for search");
 		String searchingName = scanner.next();
 		
 		while (!peoples.containsKey(searchingName)){
