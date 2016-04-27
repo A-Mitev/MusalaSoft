@@ -13,7 +13,7 @@ import java.util.TreeMap;
 
 public class Phonebook {
 	private static final String PHONEBOOK_TXT = "PhoneBook.txt";
-	private static final String REGEX_LAST_SIX_DIGITS = "[0-9]+";
+	private static final String REGEX_LAST_SIX_DIGIT = "[0-9]+";
 	private static final int REGULAR_PHONE_LENGTH = 10;
 	private static final String REGEX_FOURTH_DIGITS = "[2-9]";
 
@@ -93,7 +93,7 @@ public class Phonebook {
 		if ((number.length() == REGULAR_PHONE_LENGTH)
 				&& (number.startsWith("087") || (number.startsWith("088") || (number.startsWith("089"))))) {
 			if ((number.substring(3, 4).matches(REGEX_FOURTH_DIGITS)
-					&& (number.substring(4, 10).matches(REGEX_LAST_SIX_DIGITS)))) {
+					&& (number.substring(4, 10).matches(REGEX_LAST_SIX_DIGIT)))) {
 
 				// za proverka
 				System.out.println("Validen nomer " + " " + number);

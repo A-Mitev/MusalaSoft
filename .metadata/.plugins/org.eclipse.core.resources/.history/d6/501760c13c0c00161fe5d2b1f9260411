@@ -13,7 +13,7 @@ import java.util.TreeMap;
 
 public class Phonebook {
 	private static final String PHONEBOOK_TXT = "PhoneBook.txt";
-	private static final String REGEX_LAST_SIX_DIGITS = "[0-9]+";
+	private static final String REGEX_LAST_SIX_DIGIT = "[0-9]+";
 	private static final int REGULAR_PHONE_LENGTH = 10;
 	private static final String REGEX_FOURTH_DIGITS = "[2-9]";
 
@@ -37,16 +37,16 @@ public class Phonebook {
 		BufferedReader bReader = new BufferedReader(new FileReader(phoneBook));
 		try {
 			String line = bReader.readLine();
-			do {
+			do ((line = bReader.readLine())!= null) {
 				parts = line.split(", ");
 				String name = parts[0];
 				String phoneNumber = parts[1];
 				if (phoneValidation(phoneNumber)) {
-					String normalPhone = phoneNumber.replaceFirst("0", "+359");
+					String normalPhone = phoneNumber.replaceFirst("0","+359");
 					peoples.put(name, normalPhone);
 				}
-			} while ((line = bReader.readLine()) != null);
-
+			}
+			while ((line = bReader.readLine())!= null);
 		} catch (IOException e) {
 			e.printStackTrace();
 		} finally {
@@ -60,53 +60,54 @@ public class Phonebook {
 		for (Map.Entry<String, String> entry : peoples.entrySet()) {
 			System.out.println(entry.getKey() + " " + entry.getValue());
 		}
-
+		
 		System.err.println("\n" + "Please enter name to delete!");
 		String nameToBeDeleted = scanner.next();
-
+		
 		// povtorenie dokato ne se vuvede sashtestvuvashto ime za iztrivane
-		while (!peoples.containsKey(nameToBeDeleted)) {
-			System.err.println("Invalid name. Please enter name to delete!");
-			nameToBeDeleted = scanner.next();
+		while (!peoples.containsKey(nameToBeDeleted)){
+		System.err.println("Invalid name. Please enter name to delete!");
+		nameToBeDeleted = scanner.next();
 		}
-
+		
 		peoples.remove(nameToBeDeleted);
-
+		
 		System.out.println("\n" + "Nomera v ukazatelq sled iztrivane:");
 		for (Map.Entry<String, String> entry : peoples.entrySet()) {
 			System.out.println(entry.getKey() + " " + entry.getValue());
 		}
-
+		
 		System.out.println("\n" + "Please enter name for search:");
 		String searchingName = scanner.next();
-
-		while (!peoples.containsKey(searchingName)) {
+		
+		while (!peoples.containsKey(searchingName)){
 			System.err.println("Invalid name. Please try again!");
 			searchingName = scanner.next();
-		}
-
-		System.out.println("The phone number for " + searchingName + " is: " + peoples.get(searchingName));
-
+			}
+		
+		System.out.println("The phone number for " + searchingName
+				+ " is: " + peoples.get(searchingName));
+		
 	}
 
 	public static boolean phoneValidation(String number) {
 		if ((number.length() == REGULAR_PHONE_LENGTH)
 				&& (number.startsWith("087") || (number.startsWith("088") || (number.startsWith("089"))))) {
 			if ((number.substring(3, 4).matches(REGEX_FOURTH_DIGITS)
-					&& (number.substring(4, 10).matches(REGEX_LAST_SIX_DIGITS)))) {
-
+					&& (number.substring(4, 10).matches(REGEX_LAST_SIX_DIGIT)))) {
+				
 				// za proverka
-				System.out.println("Validen nomer " + " " + number);
+				System.out.println("Validen nomer " + " " + number); 
 				return true;
 			} else {
-
-				// za proverka
+				
+				 // za proverka
 				System.out.println("Nevalidna 4-ta cira ot nomera za nomer " + " " + number);
 				return false;
 			}
 		} else {
-
-			// za proverka
+			
+			 // za proverka
 			System.out.println("nevaliden nomer" + " " + number);
 			return false;
 		}
@@ -114,11 +115,11 @@ public class Phonebook {
 
 	public static void addEntry(String name, String number) {
 		try (BufferedWriter writer = new BufferedWriter(new FileWriter(PHONEBOOK_TXT, true))) {
-			String newEntry = name + ", " + number;
+			String newEntry = name + ", "  + number;
 			writer.newLine();
 			writer.write(newEntry);
 		} catch (IOException e) {
-			e.printStackTrace();
+			e.printStackTrace();	
 		}
 	}
 }

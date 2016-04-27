@@ -5,3 +5,4 @@
 1461660186826	Extract constant 'REGEX_LAST_SIX_DIGIT'
 1461662589335	Extract constant 'PHONEBOOK_TXT'
 1461667854308	Rename local variable 'br'
+1461736583448	Rename field 'REGEX_LAST_SIX_DIGIT'
